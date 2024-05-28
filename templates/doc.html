@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='documentacion.css' ) }}">
+    <script  language="JavaScript">
+        function showContent(dir)
+        {
+
+            var oculto = document.getElementById("destino");
+            oculto.value=dir;
+            var path = "{{ url_for('contenido') }}";
+            document.location.href="{{ url_for('contenido') }}";
+            
+            
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='img/logo_prueba.jpg' ) }}">
+        <h1>Documentacion</h1>
+        <form name="opcion">
+            <input type="hidden" id ="destino" name="destino" value="">
+        </form>
+    </header>
+    <nav>
+        {% for directorio in directorios %}
+        <a href="{{ url_for('contenido') }}" target="ifr_contenido">aaaa{{ directorio }}aaaa</a>
+        <a onclick="showContent({{ directorio }})" target="ifr_contenido">{{ directorio }}</a>
+        {% endfor %}
+    </nav>
+    <main>
+       <iframe name="ifr_contenido" src="" allow="true"></iframe>
+    </main>        
+</body>
+</html>

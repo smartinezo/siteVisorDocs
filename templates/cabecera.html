@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+        }
+
+        #image {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #menu {
+            flex: 3;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu-option {
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .menu-option:hover {
+            border-bottom: 2px solid #333;
+        }
+
+        #submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .submenu-option {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="image">
+            <img src="./img/logo_prueba.jpg" alt="logo_prueba">
+        </div>
+        <div id="menu">
+            <div class="menu-option" onclick="showSubmenu('opcion1')">Opción 1</div>
+            <div class="menu-option" onclick="showSubmenu('opcion2')">Opción 2</div>
+            <div class="menu-option" onclick="showSubmenu('opcion3')">Opción 3</div>
+            <div class="menu-option" onclick="showSubmenu('opcion4')">Opción 4</div>
+        </div>
+    </div>
+    <div id="submenu">
+        <div class="submenu-option" id="opcion1">Subopción 1</div>
+        <div class="submenu-option" id="opcion2">Subopción 2</div>
+        <div class="submenu-option" id="opcion3">Subopción 3</div>
+        <div class="submenu-option" id="opcion4">Subopción 4</div>
+    </div>
+    <script>
+        function showSubmenu(optionId) {
+            const submenu = document.getElementById('submenu');
+            const submenuOption = document.getElementById(optionId);
+            submenu.style.display = 'block';
+            submenu.style.left = submenuOption.offsetLeft + 'px';
+        }
+    </script>
+</body>
+</html>

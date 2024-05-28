@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='documentacion.css' ) }}">
+    <script  language="JavaScript">
+        function showContent(dir)
+        {
+
+            alert(dir);
+            var oculto = document.getElementById("destino");
+            oculto.value=dir;
+            var ifr = document.getElementById("ifr_contenido");
+            //ifr.setAttribute(src,"{{ url_for('contenido') }}");
+            var path = "{{ url_for('contenido') }}";
+            alert (path)
+            window.open("www.google.com", "ifr_contenido");
+            
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='img/logo_prueba.jpg' ) }}">
+        <h1>Documentacion</h1>
+        <form name="opcion">
+            <input type="text" id ="destino" name="destino" value="a">
+        </form>
+    </header>
+    <nav>
+        {% for directorio in directorios %}
+        <a onclick="showContent({{ directorio }})" target="contenido">{{ directorio }}</a>
+        {% endfor %}
+    </nav>
+    <main>
+        
+        <iframe name= "ifr_contenido" src="" ></iframe>
+    </main>        
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentacion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='contenido.css' ) }}">
+</head>
+<body>
+    <div name="divmenu">
+        <ul>
+            {% for cont in lista_ficheros %}
+                <li><a href="https://docuvvalley.blob.core.windows.net/doc/{{destino}}/{{cont}}" target="diviframe">{{ cont }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <iframe name="diviframe" src=""></iframe>
+        
+</body>
+</html>
